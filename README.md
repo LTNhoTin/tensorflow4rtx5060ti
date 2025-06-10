@@ -1,4 +1,4 @@
-# tensorflow4rtx5060ti# TensorFlow for RTX 5060TI (Custom Build)
+# TensorFlow(custom) for RTX 5060TI (Custom Build)
 
 This repository contains a custom-built TensorFlow wheel file optimized for NVIDIA RTX 5070TI GPUs.
 
@@ -24,8 +24,11 @@ conda install nvidia/label/cuda-12.8.1::cuda-toolkit
 python --version
 # Expected: Python 3.10.x
 
+# 4. Install cuDNN 9.8.0 
+pip install nvidia-cudnn-cu12==9.8.0.87
+
 # 4. Install the custom TensorFlow wheel (self-built for RTX 5060 TI)
-pip install https://github.com/weyn9q/rtx5070tensorflow/releases/download/v1.0/tensorflow-2.20.0.dev0+selfbuilt-cp310-cp310-linux_x86_64.whl
+pip install https://github.com/LTNhoTin/tensorflow4rtx5060ti/releases/download/v1.1/tensorflow-2.20.0.dev0+selfbuilt-cp310-cp310-linux_x86_64.whl
 
 # 5. Test TensorFlow and GPU availability
 python -c "import tensorflow as tf; print(f'TensorFlow version: {tf.__version__}'); print(f'GPU available: {tf.config.list_physical_devices(\"GPU\")}')"
