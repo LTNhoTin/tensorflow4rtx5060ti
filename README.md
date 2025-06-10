@@ -13,21 +13,19 @@ This repository contains a custom-built TensorFlow wheel file optimized for NVID
 ## Installation Instructions
 
 ```bash
-# Create a new directory for testing TensorFlow installation
-mkdir -p ~/tensorflow_test
+# 1. Create a new Conda environment with Python 3.10
+conda create -n ltnt python=3.10 -y
+conda activate ltnt
 
-# Create a virtual environment with Python 3.10 (crucial to use the same Python version)
-python3.10 -m venv ~/tensorflow_test/venv
+# 2. Install the CUDA Toolkit 12.8.1
+conda install nvidia/label/cuda-12.8.1::cuda-toolkit
 
-# Activate the virtual environment
-source ~/tensorflow_test/venv/bin/activate
-
-# Verify Python version in the virtual environment
+# 3. Verify Python version
 python --version
-# Should output: Python 3.10.x
+# Expected: Python 3.10.x
 
-# Install the TensorFlow wheel file
+# 4. Install the custom TensorFlow wheel (self-built for RTX 5060 TI)
 pip install https://github.com/weyn9q/rtx5070tensorflow/releases/download/v1.0/tensorflow-2.20.0.dev0+selfbuilt-cp310-cp310-linux_x86_64.whl
 
-# Test TensorFlow installation and GPU detection
-python -c "import tensorflow as tf; print(f'TensorFlow version: {tf.__version__}'); print(f'GPU available: {tf.config.list_physical_devices(\"GPU\")}'); print('GPU test:', tf.test.is_gpu_available())"
+# 5. Test TensorFlow and GPU availability
+python -c "import tensorflow as tf; print(f'TensorFlow version: {tf.__version__}'); print(f'GPU available: {tf.config.list_physical_devices(\"GPU\")}')"
